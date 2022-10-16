@@ -11,8 +11,5 @@ myvenv
 #db
 db.sqlite3
 
-#staticfiles
-staticfiles
-
 # local settings
 local_settings.py
