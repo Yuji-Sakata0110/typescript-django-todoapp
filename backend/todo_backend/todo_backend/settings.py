@@ -10,8 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
+
+# 環境変数を読み込むためのモジュールらしい
+from dotenv import load_dotenv
+load_dotenv('.env')
+
+print(load_dotenv('backend/todo_backend/.env'))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,10 +30,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-mk28urz@fwo+r#6ddt*dxlr4!o(5$f(b1qrf_8_579$tgr%ynr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 # DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', "typescript-django-todoapp0110.herokuapp.com"]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', "typescript-django-todoapp0110.herokuapp.com"]
 
 
 # Application definition
@@ -79,36 +85,17 @@ WSGI_APPLICATION = 'todo_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
-# local
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Todo_React_Django',  # mysql created DB
-        'USER': 'root',
-        'PASSWORD': 'Gi4ETw3Y',  # root pass
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': "cg3j4ltouvzw0vyc",  # mysql created DB
+        'USER': "qjmspeta9k4jqryi",
+        'PASSWORD': "j0yce6co08jhonsq",  # root pass
+        'HOST': "cwe1u6tjijexv3r6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+        'PORT': "3306",
     }
 }
-
-# heroku
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': os.getenv('MyDatabase'),  # mysql created DB
-#         'USER': os.getenv('MyUsername'),
-#         'PASSWORD': os.getenv('MyPassword'),  # root pass
-#         'HOST': os.getenv('MyHost'),
-#         'PORT': os.getenv('MyPort'),
-#     }
-# }
 
 
 # Password validation
@@ -153,6 +140,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+# cors policys
 CORS_ORIGIN_WHITELIST = [
     'https://localhost:3000'
 ]
