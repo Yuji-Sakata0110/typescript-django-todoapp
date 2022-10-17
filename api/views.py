@@ -5,9 +5,19 @@ from rest_framework.response import Response
 from .serializers import TodosSerializer
 from .models import TodoTable
 
+from django.views.generic import TemplateView
 from django.shortcuts import render
 
-# Create your views here.
+# todo home
+class IndexView(TemplateView):
+    template_name = 'index.html'
+
+    def getTodoList(request):
+        todos = TodoTable.objects.all().order_by('-id')
+        serializer = TodosSerializer(todos, many=True)
+        return Response(serializer.data)
+
+# requierd login
 @api_view(['GET'])
 def api_Overview(request):
     api_urls = {

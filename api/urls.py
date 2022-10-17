@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.generic import TemplateView
 
 from . import views
 
@@ -9,4 +10,5 @@ urlpatterns = [
     path('api/create/', views.todoCreate, name='todo_create'),
     path('api/update/<str:pk>/', views.todoUpdate, name='todo_update'),
     path('api/delete/<str:pk>/', views.todoDelete, name='todo_delete'),
+    path('', TemplateView.as_view(template_name = "index.html"), name='IndexView'),
 ]
