@@ -39,7 +39,7 @@ function App() {
     axios.post(API_URL + "create/", newTodo)
       .then(() => {
         console.log("todo created");
-      })
+      });
 
     setTodos([newTodo, ...todos]);
     settext("");
@@ -119,7 +119,7 @@ function App() {
             <button onClick={(e) => handleDelete(todo.id)}
               className="DeleteButton">Delete</button>
           </li>
-        ))}
+        ))};
       </ul>
     </div>
   );
