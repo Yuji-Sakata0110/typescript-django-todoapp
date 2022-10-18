@@ -119,10 +119,10 @@ function App() {
             <button onClick={(e) => handleDelete(todo.id)}
               className="DeleteButton">Delete</button>
           </li>
-        ))};
+        ))}
       </ul>
     </div>
-  );
+  )
 }
 
 export default App;
